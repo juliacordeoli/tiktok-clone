@@ -6,53 +6,59 @@ import {
   Platform,
   Image,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; 
-// import luluzinha from '../../../../assets/luluzinha'
+import { Ionicons } from "@expo/vector-icons";
+
+//import lulu from '../../../../assets/luna'
 
 export function FeedItem() {
   return (
-    <View style = {[{flex: 1}, {backgroundColor: "green"}]}>
+    <View style={styles.actionButton}>
+     {/* { position:"absolute", bottom:0, right:0, } */}
       <View style={styles.actionButton}>
         <TouchableOpacity>
-          <Ionicons name="heart" size={35} color="#FFF" />
+          <Ionicons name="heart" size={45} color="red" />
           <Text style={styles.actionText}></Text>
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Ionicons name="chatbubble-ellipses" size={35} color="#FFF" />
+          <Ionicons name="chatbubble-ellipses" size={45} color="#fff" />
           <Text style={styles.actionText}> </Text>
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Ionicons name="bookmark" size={35} color="#FFF" />
+          <Ionicons name="bookmark" size={45} color="gold" />
         </TouchableOpacity>
       </View>
-      <Text style={styles.textStyle}>@juliacordeoli</Text>
-      <Text style={styles.textStyle}>Contemplem a belissima Luninha fofinha!</Text>
-      {/* <Image source={require('../../../../assets/luluzinha')}></Image> */}
-
+      <View  >
+        <Text style={styles.textStyle}>@juliacordeoli</Text>
+        <Text style={styles.textStyle}>
+          Contemplem a belissima Luninha fofinha!
+        </Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   textStyle: {
-    marginLeft: 20,
-    color:"white"
+    
+    color: "white",
+    // alignItems: "flex-end",
+    // position: "absolute",
+    // bottom: 80,
+    // left: 0,
+    // zIndex:99,
+    right:90,
   },
 
   actionButton: {
     alignItems: "flex-end",
-    // position: "absolute",
+    position: "absolute",
+    bottom: 70,
+    right: 0,
     flexDirection: "column",
-    marginTop: "110%",
-    marginRight: 20,
+    marginRight: 10,
     gap: 15,
+    zIndex:99,
   },
 });
-
-
-
-
-// https://media.discordapp.net/attachments/1173737240195776565/1235013920457097286/a16b3d19-0fb1-49db-8791-1257b6a747bd.png?ex=6632d3d8&is=66318258&hm=0cfa516cc32b1255a7d7b3b6267d80d48a9e4fe75840761a97ae9c9aa41139c5&=&format=webp&quality=lossless&width=348&height=619
