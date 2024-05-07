@@ -5,19 +5,30 @@ import {
   TouchableOpacity,
   Platform,
   Image,
+  Pressable,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 
 //import lulu from '../../../../assets/luna'
 
 export function FeedItem() {
+  const [colorHeart, setColorHeart] = useState("white");
+  const [colorMark, setColorMark] = useState("white");
   return (
     <View style={styles.actionButton}>
-     {/* { position:"absolute", bottom:0, right:0, } */}
+      {/* { position:"absolute", bottom:0, right:0, } */}
       <View style={styles.actionButton}>
         <TouchableOpacity>
-          <Ionicons name="heart" size={45} color="red" />
-          <Text style={styles.actionText}></Text>
+          <Pressable
+            onPress={() => {
+              if (colorHeart == "white") setColorHeart("red");
+              else setColorHeart("white");
+            }}
+          >
+            <Ionicons name="heart" size={45} color={colorHeart} />
+            <Text style={styles.actionText}></Text>
+          </Pressable>
         </TouchableOpacity>
 
         <TouchableOpacity>
@@ -26,13 +37,20 @@ export function FeedItem() {
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Ionicons name="bookmark" size={45} color="gold" />
+          <Pressable
+            onPress={() => {
+              if (colorMark == "white") setColorMark("gold");
+              else setColorMark("white");
+            }}
+          >
+            <Ionicons name="bookmark" size={45} color={colorMark} />
+          </Pressable>
         </TouchableOpacity>
       </View>
-      <View  >
-        <Text style={styles.textStyle}>@juliacordeoli</Text>
+      <View>
+        <Text style={styles.textStyle}>@juliacordeoli (❁´◡`❁)</Text>
         <Text style={styles.textStyle}>
-          Contemplem a belissima Luninha fofinha!
+          Contemplem a belíssima Luninha fofinha!🐾💘😍💞🐶
         </Text>
       </View>
     </View>
@@ -41,14 +59,13 @@ export function FeedItem() {
 
 const styles = StyleSheet.create({
   textStyle: {
-    
     color: "white",
     // alignItems: "flex-end",
     // position: "absolute",
     // bottom: 80,
     // left: 0,
     // zIndex:99,
-    right:90,
+    right: 20,
   },
 
   actionButton: {
@@ -59,6 +76,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginRight: 10,
     gap: 15,
-    zIndex:99,
+    zIndex: 99,
   },
 });

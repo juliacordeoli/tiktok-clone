@@ -2,7 +2,7 @@ import { View, StyleSheet, Text } from "react-native";
 
 export function Search() {
   return (
-    <View styles={styles.container}>
+    <View style={styles.container}>
       <Text pagina search />
     </View>
   );

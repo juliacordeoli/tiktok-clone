@@ -39,7 +39,7 @@ export function Routes() {
 
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={Inbox}
         options={{
           tabBarIcon: ({ focused, size, color }) => {
             if (focused) {
@@ -52,7 +52,7 @@ export function Routes() {
 
       <Tab.Screen
         name="New"
-        component={New}
+        component={Inbox}
         options={{
           tabBarIcon: ({ size }) => {
             return <ButtonNew size={size} />;

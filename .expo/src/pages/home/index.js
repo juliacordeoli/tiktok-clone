@@ -7,33 +7,39 @@ import {
   StatusBar,
   Platform,
   FlatList,
+  Pressable,
 } from "react-native";
-import { FeedItem } from "../../components/feedItem"; 
+import { FeedItem } from "../../components/feedItem";
 import { useRef, useState } from "react";
-import { Video, ResizeMode } from 'expo-av';
+import { Video, ResizeMode } from "expo-av";
 
-  import lulu from "../../../../assets/luna.mp4"
+import lulu from "../../../../assets/luna.mp4";
 
 export function Home() {
   const video = useRef(null);
   const [status, setStatus] = useState({});
   return (
-
     <View style={styles.container}>
-    <FeedItem /> 
-       <Video 
-         ref={video}
-          source={lulu} 
+      <FeedItem />
+      <Pressable
+        onPress={() =>
+          status.isPlaying
+            ? video.current.pauseAsync()
+            : video.current.playAsync()
+        }
+      >
+        <Video
+          ref={video}
+          source={lulu}
           style={styles.video}
-          useNativeControls
-          // resizeMode={ResizeMode.CONTAIN}
+          resizeMode={ResizeMode.CONTAIN}
           isLooping
-          onPlaybackStatusUpdate={status => setStatus(() => status)}
+          useNativeControls={false}
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
           shouldPlay
-       /> 
-        <View style={styles.labels} >
-    
-
+        />
+      </Pressable>
+      <View style={styles.labels}>
         <TouchableOpacity>
           <Text style={styles.labelText}> Seguindo </Text>
         </TouchableOpacity>
@@ -41,9 +47,6 @@ export function Home() {
           <Text style={[styles.labelText]}> Pra você </Text>
         </TouchableOpacity>
       </View>
-        
-
-     
     </View>
   );
 }
@@ -54,30 +57,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   labels: {
-  
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap:11,
+    gap: 15,
     position: "absolute",
-    top: 6,
+    top: 20,
     left: 0,
     right: 0,
-    fontSize: 25,
- 
+   
   },
   labelText: {
     color: "#FFF",
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "500",
     marginBottom: 2,
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
-   video: {
-  //   alignSelf: 'center',
-     width: "99%",
-     height: "99%"
-  // flex:1, 
+  video: {
+    alignSelf: "flex-end",
+    width: "100%",
+    height: "100%",
+    // flex:1,
   },
- 
-  })
+});
